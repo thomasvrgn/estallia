@@ -86,4 +86,4 @@ class Bot {
 
 new Bot().init()
 
-client.login(CONFIG.TOKEN)
+client.login(process.env.TOKEN)
