@@ -5,7 +5,7 @@
 
 export default {
 
-    prefix          : '!'                         , // Bot command prefix
+    prefix          : 'e:'                         , // Bot command prefix
     name            : 'YOUR BOT NAME HERE'        , // Bot loading title
     description     : 'YOUR BOT DESCRIPTION HERE' , // Bot loading description
     
