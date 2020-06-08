@@ -29,11 +29,14 @@ export default {
                       embed       = new Discord.RichEmbed(),
                       content_pos = this.arguments.indexOf('|') !== -1 ? this.arguments.indexOf('|') : undefined,
                       content     = content_pos !== undefined ? this.arguments.slice(content_pos + 1).join(' ').split('') : this.arguments.slice(1).join(' ').split(''),
-                      subject     = content_pos ? embed.setDescription(this.arguments.slice(1, content_pos).join(' ')) : '',
                       splitted    = Array.from({ length: Math.ceil(content.length / 1000) }, (v, i) =>
                             content.slice(i * 1000, i * 1000 + 1000)
                         ).map(x => x.join(''))
 
+                if (content_pos) {
+                    embed.setDescription(this.arguments.slice(1, content_pos).join(' '))
+                }
+                
                 embed.setFooter('Estabot | Conçu par Ness', this.client.user.avatarURL)
                 embed.setTimestamp()
 
