@@ -23,10 +23,14 @@ export default {
 
         command () {
             
+            const embed = new Discord.RichEmbed()
+
+            embed.setAuthor(`Commande effectuée par ${this.message.author.username}#${this.message.author.discriminator} :`, this.message.author.avatarURL)
+            embed.setFooter('Estabot | Conçu par Ness et par l\'équipe d\'Estallia', this.client.user.avatarURL)
+            embed.setTimestamp()
             
             if (this.message.member.hasPermission('MENTION_EVERYONE')) {
                 const channel     = isNaN(parseInt(this.arguments[0])) ? this.arguments[0].slice(2, this.arguments[0].length - 1) : this.arguments[0],
-                      embed       = new Discord.RichEmbed(),
                       content_pos = this.arguments.indexOf('|') !== -1 ? this.arguments.indexOf('|') : undefined,
                       content     = content_pos !== undefined ? this.arguments.slice(content_pos + 1).join(' ').split('') : this.arguments.slice(1).join(' ').split(''),
                       splitted    = Array.from({ length: Math.ceil(content.length / 1000) }, (v, i) =>
@@ -36,9 +40,6 @@ export default {
                 if (content_pos) {
                     embed.setDescription(this.arguments.slice(1, content_pos).join(' '))
                 }
-                
-                embed.setFooter('Estabot | Conçu par Ness', this.client.user.avatarURL)
-                embed.setTimestamp()
 
                 if (this.client.channels.get(channel)) {
 
