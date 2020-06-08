@@ -1,0 +1,36 @@
+{
+  "name": "discordjs-template",
+  "version": "1.0.0",
+  "description": "🤖 Discord.js ready-to-use template.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ./node_modules/.bin/babel-node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NessMC/discordjs-template.git"
+  },
+  "keywords": [
+    "discordjs",
+    "template",
+    "discord",
+    "javascript",
+    "bot"
+  ],
+  "author": "NessMC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NessMC/discordjs-template/issues"
+  },
+  "homepage": "https://github.com/NessMC/discordjs-template#readme",
+  "dependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "discord.js": "^11.6.4",
+    "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
