@@ -15,9 +15,10 @@ export default {
 
         constructor (client, args, message) {
             
-            this.arguments = args
-            this.client    = client
-            this.message   = message
+            this.arguments  = args
+            this.client     = client
+            this.message    = message
+            this.permission = 'MENTION_EVERYONE'
 
         }
 
@@ -29,7 +30,7 @@ export default {
             embed.setFooter('Estabot | Conçu par Ness et par l\'équipe d\'Estallia', this.client.user.avatarURL)
             embed.setTimestamp()
             
-            if (this.message.member.hasPermission('MENTION_EVERYONE')) {
+            if (this.message.member.hasPermission(this.permission)) {
                 const channel     = isNaN(parseInt(this.arguments[0])) ? this.arguments[0].slice(2, this.arguments[0].length - 1) : this.arguments[0],
                       content_pos = this.arguments.indexOf('|') !== -1 ? this.arguments.indexOf('|') : undefined,
                       content     = content_pos !== undefined ? this.arguments.slice(content_pos + 1).join(' ').split('') : this.arguments.slice(1).join(' ').split(''),
@@ -66,9 +67,10 @@ export default {
                 }
             } else {
                 
-                embed.addField('Erreur lors de l\'analyse de votre commande :', `Vous n'avez pas la permission requise pour effectuer cette commande ! (Permission nécessaire : ${'MENTION_EVERYONE'.toLowerCase().split('_').join(' ')})`)
+                embed.addField('Erreur lors de l\'analyse de votre commande :', `Vous n'avez pas la permission requise pour effectuer cette commande ! (Permission nécessaire : ${this.permission.toLowerCase().split('_').join(' ')})`)
 
                 this.message.channel.send(embed)
+
             }
 
         }
